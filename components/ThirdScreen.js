@@ -39,7 +39,7 @@ export default class ThirdScreen extends Component {
       return (
         <View style={{ flex: 1 }}>
           <Text style={thirdStyles.whiteText}>A partir das suas respostas, entendemos e selecionamos perfis de outros brasileiros como você</Text>
-          <Card containerStyle={styles.card}>
+          <Card containerStyle={{...styles.card}}>
             <FlatList
               data={this.state.data}
               ItemSeparatorComponent={() => <View style={thirdStyles.personSeparator}></View>}

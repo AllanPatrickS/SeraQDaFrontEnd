@@ -33,35 +33,6 @@ export default class SeventhScreen extends Component {
     this.fetchSafeBuy();
   }
 
-  component1 = () => <Button
-    icon={<Icon {...iconClockProps} />}
-    title='1 minuto'
-    type="clear"
-    onPress={() => {
-      this.fetchSafeBuy();
-      this.updateIndex(0);
-    }}
-  />
-
-  component2 = () => <Button
-    icon={<Icon {...iconClockProps} />}
-    title='5 minutos'
-    type="clear"
-    onPress={() => {
-      this.fetchSafeBuy();
-      this.updateIndex(1);
-    }}
-  />
-
-  component3 = () => <Button
-    icon={<Icon {...iconClockProps} />}
-    title='10 minutos'
-    type="clear"
-    onPress={() => {
-      this.fetchSafeBuy();
-      this.updateIndex(2);
-    }}
-  />
 
   setList() {
     console.log(this.state.data)
@@ -69,12 +40,12 @@ export default class SeventhScreen extends Component {
       return (
         <FlatList
           data={this.state.data}
-          ItemSeparatorComponent={() => <View style={seventhStyles.checkboxSeparator}></View>}
+          ItemSeparatorComponent={() => <View style={seventhStyles.separator}></View>}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => {
             return (
               <View>
-                <Text style={{ ...seventhStyles.grayText, fontSize: 20, marginStart: 30, marginEnd: 30, marginTop: 10, alignSelf: 'center' }}>{item.title}</Text>
+                <Text style={{ ...seventhStyles.purpleText, fontSize: 20, marginStart: 30, marginEnd: 30, marginTop: 10, textDecorationLine: 'underline', }}>{item.title}</Text>
               </View>
             );
           }}
@@ -83,28 +54,55 @@ export default class SeventhScreen extends Component {
   }
 
   render() {
-    const buttons = [{ element: this.component1 }, { element: this.component2 }, { element: this.component3 }]
     return (
       <View style={styles.background}>
         <View style={{ ...seventhStyles.modalView }}>
+        <View style={{flex: 1}}>
           <Button
             icon={<Icon {...iconProps} />}
             type="clear"
-            containerStyle={{ alignSelf: 'baseline', flex: 0.20, }}
+            containerStyle={{ alignSelf: 'baseline', }}
             onPress={() => this.props.navigation.goBack()}
           />
 
-          <Text style={{ ...seventhStyles.purpleText, fontSize: 20, marginStart: 30, marginTop: 10, alignSelf: 'center' }}>Muito ocupado?</Text>
-          <Text style={{ ...seventhStyles.purpleText, fontSize: 20, marginStart: 30, marginTop: 10, alignSelf: 'center' }}>Aprenda no seu ritmo.</Text>
-          <Text style={{ ...seventhStyles.grayText, fontSize: 20, marginStart: 30, marginEnd: 30, marginTop: 10, alignSelf: 'center' }}>Separamos estes conteúdos de 1 a 10 minutos de tempo de leitura especialmente para você</Text>
+          <Text style={{ ...seventhStyles.grayText, fontFamily: 'KommonGrotesk-Bold', fontSize: 24, marginStart: 30, marginTop: 10 }}>Muito ocupado?</Text>
+          <Text style={{ ...seventhStyles.grayText, fontFamily: 'KommonGrotesk-Bold', fontSize: 24, marginStart: 30, marginTop: 10 }}>Aprenda no seu ritmo.</Text>
+          <Text style={{ ...seventhStyles.grayText, fontSize: 14, marginStart: 30, marginEnd: 30, marginTop: 10 }}>Separamos estes conteúdos de 1 a 10 minutos de tempo de leitura especialmente para você</Text>
 
-          <ButtonGroup
-            selectedIndex={this.state.selectedIndex}
-            buttons={buttons}
-            containerStyle={{ height: 100 }}
-          />
+          <View style={{ flexDirection: 'row' }}>
+            <Button
+              icon={<Icon {...iconClockProps} />}
+              title='1 minuto'
+              titleStyle={{ fontSize: 14 }}
+              type="clear"
+              onPress={() => {
+                this.fetchSafeBuy();
+                this.updateIndex(0);
+              }}
+            />
+            <Button
+              icon={<Icon {...iconClockProps} />}
+              titleStyle={{ fontSize: 14 }}
+              title='5 minutos'
+              type="clear"
+              onPress={() => {
+                this.fetchSafeBuy();
+                this.updateIndex(1);
+              }}
+            />
+            <Button
+              icon={<Icon {...iconClockProps} />}
+              titleStyle={{ fontSize: 14 }}
+              title='10 minutos'
+              type="clear"
+              onPress={() => {
+                this.fetchSafeBuy();
+                this.updateIndex(2);
+              }}
+            />
+          </View>
           {this.setList()}
-
+          </View>
           <View style={{ justifyContent: 'flex-end', flex: 0.2, marginBottom: 30 }}>
             <View style={{ ...seventhStyles.separator }}></View>
             <TouchableOpacity style={{ alignSelf: 'center' }} onPress={() => {
@@ -140,14 +138,14 @@ const iconProps = {
   name: 'close',
   type: 'material',
   size: 50,
-  color: Colors.primaryPurple,
+  color: Colors.secondaryGray,
   containerStyle: { marginTop: 10, marginStart: 10 }
 }
 
 const iconClockProps = {
   name: 'clockcircleo',
   type: 'antdesign',
-  size: 50,
+  size: 20,
   color: Colors.secondaryGray,
   containerStyle: { marginTop: 10, marginStart: 10 }
 }

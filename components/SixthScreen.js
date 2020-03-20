@@ -14,7 +14,7 @@ export default class SixthScreen extends Component {
       checkbox: 0,
       type: '',
       value: 0,
-      parcel: 0
+      parcel: 1
     };
   }
 
@@ -166,7 +166,7 @@ export default class SixthScreen extends Component {
                 type="clear"
                 containerStyle={{ alignSelf: 'baseline' }}
                 onPress={() => {
-                  if (this.state.parcel != 0) {
+                  if (this.state.parcel >= 1) {
                     this.setState({ parcel: this.state.parcel - 1 })
                   }
                 }}
@@ -175,7 +175,11 @@ export default class SixthScreen extends Component {
                 icon={<Icon {...iconPropsPlus} />}
                 type="clear"
                 containerStyle={{ alignSelf: 'baseline' }}
-                onPress={() => this.setState({ parcel: this.state.parcel + 1 })}
+                onPress={() =>  {
+                  if (this.state.parcel <= 12) {
+                    this.setState({ parcel: this.state.parcel + 1 })
+                  }
+                }}
               />
             </View>
             <View style={{ ...sixthStyles.separator }}></View>
@@ -272,23 +276,23 @@ export default class SixthScreen extends Component {
             containerStyle={{ alignSelf: 'baseline', flex: 0.20, }}
             onPress={() => this.setState({ modalPos: 2 })}
           />
-          <ScrollView style={{ flex: 1, alignSelf: 'auto' }}>
+          <ScrollView style={{ flex: 1 }}>
 
-            <Text style={{ ...sixthStyles.grayText, fontSize: 20, marginStart: 30, marginEnd: 30, marginTop: 10, alignSelf: 'center' }}>Será que dá?</Text>
+            <Text style={{ ...sixthStyles.grayText, fontSize: 24, marginStart: 30, marginEnd: 30, marginTop: 10, fontFamily: 'KommonGrotesk-Bold',}}>Será que dá?</Text>
 
 
-            <Text style={{ ...sixthStyles.grayText, fontSize: 20, marginStart: 30, marginEnd: 30, marginTop: 10, alignSelf: 'center' }}>chegou para te dizer sim ou não</Text>
-            <Text style={{ ...sixthStyles.grayText, fontSize: 20, marginStart: 30, marginEnd: 30, marginTop: 10, alignSelf: 'center' }}>"será que dá" é um sistema que estuda o risco de dívida ao comprar, te dando a oportunidade de descobrir se é o momento certo para fazer aquela comprinha extra.</Text>
-            <Text style={{ ...sixthStyles.grayText, fontSize: 20, marginStart: 30, marginEnd: 30, marginTop: 10, alignSelf: 'center' }}>Vamos entender como funciona?</Text>
-            <Text style={{ ...sixthStyles.grayText, fontSize: 20, marginStart: 30, marginEnd: 30, marginTop: 10, alignSelf: 'center' }}>Vermelho: Não é o momento certo para fazer esse gasto. Risco alto de dívida.</Text>
-            <Image source={require('../assets/images/RedBar.png')} style={{ width: Layout.window.width - 40, height: 10 }} />
+            <Text style={{ ...sixthStyles.grayText, fontSize: 18, marginStart: 30, marginEnd: 30, marginTop: 10, fontFamily: 'KommonGrotesk-Regular', }}>chegou para te dizer sim ou não</Text>
+            <Text style={{ ...sixthStyles.grayText, fontSize: 14, marginStart: 30, marginEnd: 30, marginTop: 10, fontFamily: 'KommonGrotesk-Regular', }}>"será que dá" é um sistema que estuda o risco de dívida ao comprar, te dando a oportunidade de descobrir se é o momento certo para fazer aquela comprinha extra.</Text>
+            <Text style={{ ...sixthStyles.grayText, fontSize: 14, marginStart: 30, marginEnd: 30, marginTop: 10, fontFamily: 'KommonGrotesk-Regular', }}>Vamos entender como funciona?</Text>
+            <Text style={{ ...sixthStyles.grayText, fontSize: 14, marginStart: 30, marginEnd: 30, marginTop: 10, fontFamily: 'KommonGrotesk-Regular', }}>Vermelho: Não é o momento certo para fazer esse gasto. Risco alto de dívida.</Text>
+            <Image source={require('../assets/images/RedBar.png')} style={{ width: 70, height: 10 }} containerStyle={{marginStart: 30, marginTop: 10}} />
             <View style={{ ...sixthStyles.separator }}></View>
-            <Text style={{ ...sixthStyles.grayText, fontSize: 20, marginStart: 30, marginEnd: 30, marginTop: 10, alignSelf: 'center' }}>Amarelo: No nível intermediário temos duas divisões: "Talvez Sim" e "Talvez Não".</Text>
-            <Text style={{ ...sixthStyles.grayText, fontSize: 20, marginStart: 30, marginEnd: 30, marginTop: 10, alignSelf: 'center' }}>Talvez Sim: Risco médio-baixo da compra. A compra pode ser feita com monitoramento mensal. Talvez Não: Risco médio-alto da compra. Aconselhável esperar.</Text>
-            <Image source={require('../assets/images/YellowBar.png')} style={{ width: Layout.window.width - 40, height: 10 }} />
+            <Text style={{ ...sixthStyles.grayText, fontSize: 14, marginStart: 30, marginEnd: 30, marginTop: 10, fontFamily: 'KommonGrotesk-Regular', }}>Amarelo: No nível intermediário temos duas divisões: "Talvez Sim" e "Talvez Não".</Text>
+            <Text style={{ ...sixthStyles.grayText, fontSize: 14, marginStart: 30, marginEnd: 30, marginTop: 10, fontFamily: 'KommonGrotesk-Regular', }}>Talvez Sim: Risco médio-baixo da compra. A compra pode ser feita com monitoramento mensal. Talvez Não: Risco médio-alto da compra. Aconselhável esperar.</Text>
+            <Image source={require('../assets/images/YellowBar.png')} style={{ width: 70, height: 10 }} containerStyle={{marginStart: 30, marginTop: 10}} />
             <View style={{ ...sixthStyles.separator }}></View>
-            <Text style={{ ...sixthStyles.grayText, fontSize: 20, marginStart: 30, marginEnd: 30, marginTop: 10, alignSelf: 'center' }}>Verde: É o momento certo para fazer esse gasto. Baixo alto de dívida.</Text>
-            <Image source={require('../assets/images/GreenBar.png')} style={{ width: Layout.window.width - 40, height: 10 }} />
+            <Text style={{ ...sixthStyles.grayText, fontSize: 14, marginStart: 30, marginEnd: 30, marginTop: 10, fontFamily: 'KommonGrotesk-Regular', }}>Verde: É o momento certo para fazer esse gasto. Baixo alto de dívida.</Text>
+            <Image source={require('../assets/images/GreenBar.png')} style={{ width: 70, height: 10 }} containerStyle={{marginStart: 30, marginTop: 10}} />
             
           </ScrollView>
           <View style={{ justifyContent: 'flex-end', flex: 0.2, marginBottom: 30 }}>

@@ -50,10 +50,11 @@ export default class FifthScreen extends Component {
             <Badge status="success" badgeStyle={{ backgroundColor: Colors.secondaryGray, borderColor: Colors.secondaryGray }} />
           </View>
           <Button
-            containerStyle={{ alignSelf: 'center', marginBottom: 30 }}
+            containerStyle={{ alignSelf: 'center', marginBottom: 30, width:100 }}
             buttonStyle={{ backgroundColor: Colors.secondaryPurple, height: 100 }}
             onPress={() => this.setState({ modalNotActive: false })}
             title="Estudar compra"
+            titleStyle={{alignSelf:'flex-end'}}
           />
         </View >);
     } else {
@@ -67,11 +68,11 @@ export default class FifthScreen extends Component {
           />
           <Text style={{...fifthStyles.grayText, fontSize: 30, marginStart: 30, marginEnd: 30, marginTop: 10}}>Qual tipo de informação você procura?</Text>
           <TouchableOpacity style={{ marginStart: 30, marginTop: 50 }} onPress={() => this.props.navigation.navigate("SixthScreen", { data: this.state.person })}>
-            <Text style={fifthStyles.purpleText}>Analisar compra</Text>
+            <Text style={{...fifthStyles.purpleText, fontSize: 18}}>Analisar compra</Text>
           </TouchableOpacity>
           <View style={fifthStyles.separator}></View>
           <TouchableOpacity style={{ marginStart: 30 }} onPress={() => this.props.navigation.navigate("SeventhScreen", { data: this.state.person })}>
-            <Text style={fifthStyles.purpleText}>Conteúdo de leitura rápida</Text>
+            <Text style={{...fifthStyles.purpleText, fontSize: 18}}>Conteúdo de leitura rápida</Text>
           </TouchableOpacity>
         </View>
       );
